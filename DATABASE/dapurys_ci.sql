@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 08 Jan 2024 pada 18.00
+-- Waktu pembuatan: 10 Jan 2024 pada 17.25
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 8.2.4
 
@@ -18,55 +18,8 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `lks`
+-- Database: `dapurys_ci`
 --
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `data_belanja`
---
-
-CREATE TABLE `data_belanja` (
-  `id_barang` int(11) NOT NULL,
-  `nama` varchar(500) NOT NULL,
-  `berat` varchar(500) NOT NULL,
-  `id_kategori` int(11) NOT NULL,
-  `harga` varchar(500) NOT NULL,
-  `jumlah` varchar(500) NOT NULL,
-  `total` varchar(500) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data untuk tabel `data_belanja`
---
-
-INSERT INTO `data_belanja` (`id_barang`, `nama`, `berat`, `id_kategori`, `harga`, `jumlah`, `total`) VALUES
-(6, 'Cumi Balado', '33', 0, '25000', '1', '77'),
-(7, 'Keisha', '', 0, '888', '4', '888');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `menu`
---
-
-CREATE TABLE `menu` (
-  `id` int(11) NOT NULL,
-  `menu_id` int(11) NOT NULL,
-  `judul` varchar(500) NOT NULL,
-  `icon` varchar(500) NOT NULL,
-  `url` varchar(500) NOT NULL,
-  `is_active` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data untuk tabel `menu`
---
-
-INSERT INTO `menu` (`id`, `menu_id`, `judul`, `icon`, `url`, `is_active`) VALUES
-(1, 1, 'Dashboard', 'fa fa-th', '/Dashboard', 1),
-(2, 2, 'Data Belanja', 'fa fa-folder-open', '/Belanja', 1);
 
 -- --------------------------------------------------------
 
@@ -91,7 +44,7 @@ CREATE TABLE `tb_barang` (
 --
 
 INSERT INTO `tb_barang` (`kode_barang`, `nama_barang`, `keterangan`, `satuan_barang`, `kategori_barang`, `harga_beli`, `harga_jual`, `stok`, `gambar`) VALUES
-(4, 'Rantang 4 Mneu', 'tongseng ayam,udang gortep,teri kentang balado,tumis buncis', 1, 2, 5008, 75000, 5, 'lauk1.jpg'),
+(4, 'Rantang 4 Mneu', 'tongseng ayam,udang gortep,teri kentang balado,tumis buncis', 1, 2, 5008, 75000, 4, 'lauk1.jpg'),
 (8, 'ikan goreng sambal dabu” ', 'Bisa di request tingkat pedasnya', 2, 2, 1, 30000, 4, 'lauk6.jpg'),
 (12, 'Sapi Lada Hitam', 'Bisa di request tingkat pedasnya', 1, 2, 1, 30000, 5, 'lauk7.jpg'),
 (13, 'udang n kerang saos padang ', 'Bisa direquest tingkat pedasnya', 1, 2, 1, 35000, 3, 'lauk8.jpg'),
@@ -101,7 +54,8 @@ INSERT INTO `tb_barang` (`kode_barang`, `nama_barang`, `keterangan`, `satuan_bar
 (20, 'ayam goreng bawang putih ', 'Bisa direquest tingkat pedasnya', 1, 2, 1, 25000, 5, 'lauk9.jpg'),
 (21, 'Rantang 3 Menu', 'udang saos tiram,sambal kacang panjang telor puyuh,sop bunga kol.', 1, 2, 1, 50000, 3, 'lauk10.jpg'),
 (22, 'Rantang 3 Mneu', 'gulai ikan kakap,terong rebon cabe ijo,tumis buncis bawang putih', 1, 2, 1, 50000, 4, 'lauk11.jpg'),
-(23, 'Rantang 3 Mneu', 'gulai udang,mie aceh,acar timun wortel', 1, 2, 1, 50000, 5, 'lauk12.jpg');
+(23, 'Rantang 3 Mneu', 'gulai udang,mie aceh,acar timun wortel', 1, 2, 1, 50000, 5, 'lauk12.jpg'),
+(26, 'mie ayam', '', 1, 2, 1, 15000, 5, NULL);
 
 -- --------------------------------------------------------
 
@@ -126,7 +80,11 @@ CREATE TABLE `tb_invoice` (
 
 INSERT INTO `tb_invoice` (`id`, `nama`, `alamat`, `tgl_pesan`, `nohp`, `batas_bayar`, `nama_barang`, `jumlah`) VALUES
 (8, 'keisha', 'jl.kartama', '2024-01-07 00:00:00', 7687585, '2024-01-10 20:29:56', '', 0),
-(9, 'tata', 'hjfgj', '2024-01-07 00:00:00', 5345346, '2024-01-10 22:57:31', '', 0);
+(9, 'tata', 'hjfgj', '2024-01-07 00:00:00', 5345346, '2024-01-10 22:57:31', '', 0),
+(10, 'zevania', 'jl.riau', '2024-01-09 00:00:00', 12345, '2024-01-12 09:43:28', '', 0),
+(13, 'anto', 'jl.kartama', '2024-01-10 00:00:00', 1233234, '2024-01-13 21:25:19', '', 0),
+(38, 'aril', 'jl.kartama', '2024-01-10 00:00:00', 1213, '2024-01-13 23:09:42', '', 0),
+(45, 'aisyah', 'jl.kartama', '2024-01-10 00:00:00', 1223123, '2024-01-13 23:23:15', '', 0);
 
 -- --------------------------------------------------------
 
@@ -144,7 +102,6 @@ CREATE TABLE `tb_kategori` (
 --
 
 INSERT INTO `tb_kategori` (`id_kategori`, `nama_kategori`) VALUES
-(1, 'pakaian'),
 (2, 'makanan');
 
 -- --------------------------------------------------------
@@ -169,12 +126,18 @@ CREATE TABLE `tb_pesanan` (
 --
 
 INSERT INTO `tb_pesanan` (`id`, `id_brg`, `nama_brg`, `nohp`, `jumlah`, `harga`, `batas_bayar`, `pilihan`) VALUES
-(4, 8, 'baju  muslim', 0, 1, 150000, '0000-00-00 00:00:00', NULL),
-(5, 8, 'baju  muslim', 0, 1, 150000, '0000-00-00 00:00:00', NULL),
-(6, 8, 'baju  muslim', 0, 1, 150000, '0000-00-00 00:00:00', NULL),
-(7, 8, 'baju  muslim', 0, 1, 150000, '0000-00-00 00:00:00', NULL),
-(8, 8, 'baju  muslim', 0, 1, 150000, '0000-00-00 00:00:00', NULL),
-(9, 4, 'Rantang 4 Mneu', 0, 1, 75000, '0000-00-00 00:00:00', NULL);
+(9, 4, 'Rantang 4 Mneu', 0, 1, 75000, '0000-00-00 00:00:00', NULL),
+(10, 12, 'Sapi Lada Hitam', 0, 1, 30000, '0000-00-00 00:00:00', NULL),
+(11, 12, 'Sapi Lada Hitam', 0, 1, 30000, '0000-00-00 00:00:00', NULL),
+(37, 12, 'Sapi Lada Hitam', 0, 1, 30000, '0000-00-00 00:00:00', NULL),
+(38, 12, 'Sapi Lada Hitam', 0, 1, 30000, '0000-00-00 00:00:00', NULL),
+(39, 12, 'Sapi Lada Hitam', 0, 1, 30000, '0000-00-00 00:00:00', NULL),
+(40, 12, 'Sapi Lada Hitam', 0, 1, 30000, '0000-00-00 00:00:00', NULL),
+(41, 12, 'Sapi Lada Hitam', 0, 1, 30000, '0000-00-00 00:00:00', NULL),
+(42, 12, 'Sapi Lada Hitam', 0, 1, 30000, '0000-00-00 00:00:00', NULL),
+(43, 12, 'Sapi Lada Hitam', 0, 1, 30000, '0000-00-00 00:00:00', NULL),
+(44, 12, 'Sapi Lada Hitam', 0, 1, 30000, '0000-00-00 00:00:00', NULL),
+(45, 12, 'Sapi Lada Hitam', 0, 1, 30000, '0000-00-00 00:00:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -260,18 +223,6 @@ INSERT INTO `user` (`user_id`, `username`, `password`, `name`, `is_active`, `add
 --
 
 --
--- Indeks untuk tabel `data_belanja`
---
-ALTER TABLE `data_belanja`
-  ADD PRIMARY KEY (`id_barang`);
-
---
--- Indeks untuk tabel `menu`
---
-ALTER TABLE `menu`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indeks untuk tabel `tb_barang`
 --
 ALTER TABLE `tb_barang`
@@ -326,28 +277,16 @@ ALTER TABLE `user`
 --
 
 --
--- AUTO_INCREMENT untuk tabel `data_belanja`
---
-ALTER TABLE `data_belanja`
-  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT untuk tabel `menu`
---
-ALTER TABLE `menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
 -- AUTO_INCREMENT untuk tabel `tb_barang`
 --
 ALTER TABLE `tb_barang`
-  MODIFY `kode_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `kode_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_invoice`
 --
 ALTER TABLE `tb_invoice`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_kategori`
@@ -359,7 +298,7 @@ ALTER TABLE `tb_kategori`
 -- AUTO_INCREMENT untuk tabel `tb_pesanan`
 --
 ALTER TABLE `tb_pesanan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_produk`
